@@ -6,27 +6,29 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct HabitsApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+   
+    let persistenceController = PersistenceController.shared
+    
+    init() {
+        ValueTransformer.setValueTransformer(
+              SerializableColorTransformer(),
+              forName: NSValueTransformerName(
+                rawValue: "SerializableColorTransformer"))
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    ActivityManager.updateActivities()
+                }
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
         }
-        .modelContainer(sharedModelContainer)
+        
     }
+    
 }

@@ -1,0 +1,364 @@
+// HabitGridButton.swift
+// TimeSince
+// Created by Ryan on 13/11/2023.
+
+import SwiftUI
+import ActivityKit
+import CoreData
+
+struct HabitGridButton: View {
+    enum InfoButtonState {
+        case idle, adding, done, undo, undoing
+        
+    }
+    
+    @State private var contextChangesObserver: Any?
+
+    @ObservedObject var habit: Habit
+    @Environment(\.managedObjectContext) var context
+    @State private var internalState: InfoButtonState = .idle
+    @Binding var editingHabit: Habit?
+    @Binding var timerEvent: Event?
+    @Binding var actionsFor: Habit?
+    @State var lastCreatedEvent: Event?
+    
+    @FetchRequest
+    private var events: FetchedResults<Event>
+    
+    init(habit: Habit, editingHabit: Binding<Habit?>,  timerEvent: Binding<Event?>, actionsFor: Binding<Habit?>) {
+        
+        self.habit = habit
+        
+        
+        self._editingHabit = editingHabit
+        self._timerEvent = timerEvent
+        self._actionsFor = actionsFor
+        
+        let request: NSFetchRequest<Event> = Event.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+        request.predicate = NSPredicate(format: "habit == %@ AND isCancelled == %@", habit, NSNumber(value: false))
+        request.fetchLimit = 1
+        
+        _events = FetchRequest(fetchRequest: request, animation: .easeInOut)
+        
+       
+    }
+    
+  
+    
+    var state: InfoButtonState {
+        
+        get {
+            
+          
+        
+            return internalState
+            
+        }
+        
+        set (new) {
+            self.internalState = new
+        }
+        
+    }
+    
+    var body: some View {
+        Button(action: onMainTap) {
+            buttonContent()
+        }
+        .onAppear() {
+           
+            setupContextObserver()
+        }
+        .onAppear() {
+            if lastCreatedEvent?.managedObjectContext == nil {
+                lastCreatedEvent = nil
+            }
+        }
+        //.disabled(state != .idle)
+        .contentShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+    }
+
+    private func onMainTap() {
+        
+        if state != .idle {
+            return
+        }
+        
+        
+        withAnimation {
+            internalState = .adding
+        }
+        
+        FeedbackManager.shared.selectionChanged()
+
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            FeedbackManager.shared.notificationOccurred(.success)
+            let event = saveNewEvent()
+
+            
+            self.scheduleTask(interval: 0, forLastCreatedID: event.objectID) {
+                internalState = .done
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.scheduleTask(interval: 0, forLastCreatedID: event.objectID) {
+                    internalState = .undo
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.scheduleTask(interval: 0, forLastCreatedID: event.objectID) {
+                        internalState = .idle
+                    }
+                    
+                   
+                }
+               
+            }
+            
+            
+        }
+    }
+    
+    func scheduleTask(interval: Double, forLastCreatedID id: NSManagedObjectID?, action: @escaping ( () -> Void)) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            
+            if id == nil || self.lastCreatedEvent?.objectID == id {
+                
+                withAnimation {
+                    action()
+                }
+                
+            } else {
+                internalState = .idle
+            }
+            
+        }
+        
+    }
+
+    private func saveNewEvent() -> Event {
+        
+       
+        let event = habit.createNewEvent()
+        lastCreatedEvent = event
+        if event.habitHasDuration {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                timerEvent = event
+            }
+            
+            ActivityManager.updateActivities()
+            
+        }
+        
+        return event
+        
+    }
+
+    private func buttonContent() -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                .frame(height: 120)
+                .foregroundStyle(habit.color)
+                .shadow(radius: 3)
+                .opacity(0.8)
+                .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    topRowContent
+                    Spacer()
+                    habitInfoContent
+                }
+                .foregroundColor(.white)
+                .padding(.vertical, 16)
+
+                Spacer()
+            }
+            .padding(.leading, 15)
+            .padding(.trailing, 10)
+        }
+      
+    }
+
+    private var topRowContent: some View {
+        HStack {
+            Image(systemName: habit.symbolName ?? "")
+                .frame(height: 20)
+                .font(.system(size: 22))
+            
+            Spacer()
+            
+            Button(action: {
+                
+                if let lastCreatedEvent = lastCreatedEvent, state == .undo {
+                    performUndo(lastCreatedEvent)
+                   
+                } else {
+                    actionsFor = habit
+                }
+                
+            }) {
+                infoButtonContent
+            }
+            .hoverEffect(.lift)
+            .scaleEffect([InfoButtonState.done, .undo].contains(state) ? 1.25 : 1.0)
+            .disabled([InfoButtonState.adding, .undoing, .done].contains(state))
+            .frame(height: 30)
+        }
+    }
+    
+    func performUndo(_ event: Event) {
+        
+        
+        FeedbackManager.shared.selectionChanged()
+        
+        withAnimation(.default) {
+            
+            internalState = .idle
+           
+        }
+        
+        event.delete(cancelFirst: true)
+        self.lastCreatedEvent = nil
+        
+    }
+
+    private var habitInfoContent: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            
+            HStack(spacing: 4) {
+                
+                if habit.hasDuration {
+                    
+                    Image(systemName: "stopwatch")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 15, weight: .semibold))
+                    
+                }
+                
+                Text(habit.name ?? "")
+                    .lineLimit(1)
+                    .font(.system(size: 18, weight: .semibold))
+                
+            }
+
+            Text(getHabitInfoString())
+                .lineLimit(1)
+                .opacity(0.8)
+        }
+    }
+
+    private var infoButtonContent: some View {
+        ZStack {
+            Circle()
+                .foregroundStyle(.white.opacity(0.2))
+            Circle()
+                .trim(from: 0, to: [InfoButtonState.adding].contains(state) ? 1.0 : 0.0)
+                .stroke(Color.white, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+                .transaction { $0.animation = [InfoButtonState.done, .idle].contains(state) ? nil : .default }
+
+            stateImage
+                .transaction { $0.animation = [InfoButtonState.idle, .done].contains(state) ? nil : .default }
+
+        }
+        .drawingGroup()
+    }
+
+    private var stateImage: some View {
+        Group {
+            switch state {
+            case .idle: Image(systemName: "ellipsis").fontWeight(.black)
+            case .adding: EmptyView()
+            case .done: HStack {
+                Image(systemName: "checkmark").fontWeight(.semibold)
+            }
+            
+            case .undo:
+                Image(systemName: "arrow.uturn.backward").fontWeight(.semibold)
+            case .undoing:
+                Image(systemName: "ellipsis").fontWeight(.black)
+            }
+        }
+        .foregroundStyle(.white)
+    }
+
+    private func getHabitInfoString() -> String {
+        
+        if state == .adding {
+            return habit.hasDuration ? "Starting Timer..." : "Logging..."
+        }
+        
+        
+        if state == .undoing {
+            return habit.hasDuration ? "Stopping Timer..." : "Undoing..."
+        }
+        
+        
+        guard let latest = events.first else {
+         
+            return "Never Logged"
+        }
+        
+       
+        
+
+        if latest != lastCreatedEvent {
+            return formatRelativeTime(since: latest.startDate ?? Date())
+        }
+
+        if latest.habitHasDuration && habit.hasDuration && latest.endDate == nil {
+            return "Timer Active"
+        }
+
+        return formatRelativeTime(since: latest.startDate ?? Date())
+        
+    }
+
+    func formatRelativeTime(since date: Date) -> String {
+          let calendar = Calendar.current
+          let now = Date()
+          let components = calendar.dateComponents([.minute, .hour, .day], from: date, to: now)
+
+          if let day = components.day, day > 0 {
+              return "\(day) \(day == 1 ? "day" : "days") ago"
+          } else if let hour = components.hour, hour > 0 {
+              return "\(hour) \(hour == 1 ? "hour" : "hours") ago"
+          } else if let minute = components.minute, minute > 0 {
+              return "\(minute) \(minute == 1 ? "minute" : "minutes") ago"
+          } else {
+              return "Just now"
+          }
+      }
+    
+    private func setupContextObserver() {
+            contextChangesObserver = NotificationCenter.default.addObserver(
+                forName: .NSManagedObjectContextObjectsDidChange,
+                object: context,
+                queue: nil
+            ) { _ in
+
+                if lastCreatedEvent != nil && (lastCreatedEvent!.managedObjectContext == nil || lastCreatedEvent!.isCancelled) {
+                    self.handleEventDeletion()
+                }
+            }
+        }
+    
+    private func handleEventDeletion() {
+            // Update state as required
+            withAnimation {
+                
+                if internalState != .undoing {
+                    internalState = .idle
+                }
+                
+                
+            }
+            lastCreatedEvent = nil
+        }
+    
+}

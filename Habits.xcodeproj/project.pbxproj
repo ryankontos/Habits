@@ -7,39 +7,286 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0910452B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */; };
+		BF0910462B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */; };
+		BF0910472B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */; };
+		BF0910482B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */; };
+		BF13D21E2B061F5300ECCEEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF13D21D2B061F5300ECCEEF /* ContentView.swift */; };
+		BF13D2212B061FC700ECCEEF /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF13D2202B061FC700ECCEEF /* SymbolPicker */; };
+		BF13D2232B063CBF00ECCEEF /* ActiveHabitEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF13D2222B063CBF00ECCEEF /* ActiveHabitEventView.swift */; };
+		BF4329D42B0E599400ECAE4C /* CustomLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4329D32B0E599400ECAE4C /* CustomLogView.swift */; };
+		BF59B7E82B0682A8009D2ED5 /* EventActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59B7E72B0682A8009D2ED5 /* EventActivity.swift */; };
+		BF59B7EA2B0682A8009D2ED5 /* EventActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59B7E72B0682A8009D2ED5 /* EventActivity.swift */; };
+		BF59B7EC2B068E2E009D2ED5 /* SerializableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D402B061DE000D67707 /* SerializableColor.swift */; };
+		BF7D533C2B0900E2002B4694 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D533B2B0900E2002B4694 /* Date.swift */; };
+		BF7D533D2B0900E2002B4694 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D533B2B0900E2002B4694 /* Date.swift */; };
+		BF7D533E2B0900E2002B4694 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D533B2B0900E2002B4694 /* Date.swift */; };
+		BF85C25A2B067258001DE950 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C2592B067258001DE950 /* WidgetKit.framework */; };
+		BF85C25C2B067258001DE950 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C25B2B067258001DE950 /* SwiftUI.framework */; };
+		BF85C2612B067258001DE950 /* Habits_WidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85C2602B067258001DE950 /* Habits_WidgetsLiveActivity.swift */; };
+		BF85C2632B067258001DE950 /* Habits_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85C2622B067258001DE950 /* Habits_Widgets.swift */; };
+		BF85C2672B06725A001DE950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85C2662B06725A001DE950 /* Assets.xcassets */; };
+		BF85C26B2B06725A001DE950 /* Habits WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF85C2572B067258001DE950 /* Habits WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF85D90A2B076BAF00803EA2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D9092B076BAF00803EA2 /* Persistence.swift */; };
+		BF85D90B2B076BAF00803EA2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D9092B076BAF00803EA2 /* Persistence.swift */; };
+		BF85D90C2B076BAF00803EA2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D9092B076BAF00803EA2 /* Persistence.swift */; };
+		BF85D91E2B076CF600803EA2 /* Habit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */; };
+		BF85D9202B076CF600803EA2 /* Habit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */; };
+		BF91A53C2B0CE19F00EB14F6 /* MultiHabitButtonWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF91A53B2B0CE19F00EB14F6 /* MultiHabitButtonWidgetView.swift */; };
+		BF91A53D2B0CF53600EB14F6 /* ColorOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */; };
+		BF91A53E2B0CF53600EB14F6 /* ColorOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */; };
+		BF91A53F2B0CF68D00EB14F6 /* Habit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */; };
+		BFBDFF962B0A4A2100F60611 /* EventStateIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDFF942B0A4A2100F60611 /* EventStateIntent.swift */; };
+		BFBDFF9D2B0A7F8800F60611 /* EventStateIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDFF942B0A4A2100F60611 /* EventStateIntent.swift */; };
+		BFBDFF9E2B0A848500F60611 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D442B061E0400D67707 /* FeedbackManager.swift */; };
 		BFBF7D292B061D3900D67707 /* HabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D282B061D3900D67707 /* HabitsApp.swift */; };
-		BFBF7D2B2B061D3900D67707 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D2A2B061D3900D67707 /* ContentView.swift */; };
-		BFBF7D2D2B061D3900D67707 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D2C2B061D3900D67707 /* Item.swift */; };
 		BFBF7D2F2B061D3A00D67707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF7D2E2B061D3A00D67707 /* Assets.xcassets */; };
 		BFBF7D322B061D3A00D67707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF7D312B061D3A00D67707 /* Preview Assets.xcassets */; };
+		BFBF7D412B061DE000D67707 /* SerializableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D402B061DE000D67707 /* SerializableColor.swift */; };
+		BFBF7D432B061DFA00D67707 /* AllEventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D422B061DFA00D67707 /* AllEventsList.swift */; };
+		BFBF7D4D2B061E0400D67707 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D442B061E0400D67707 /* FeedbackManager.swift */; };
+		BFBF7D502B061E0400D67707 /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D472B061E0400D67707 /* EditHabitView.swift */; };
+		BFBF7D512B061E0400D67707 /* BrowseDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D482B061E0400D67707 /* BrowseDataView.swift */; };
+		BFBF7D522B061E0400D67707 /* ColorOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */; };
+		BFBF7D532B061E0400D67707 /* HabitGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D4A2B061E0400D67707 /* HabitGrid.swift */; };
+		BFBF7D542B061E0400D67707 /* HabitGridButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D4B2B061E0400D67707 /* HabitGridButton.swift */; };
+		BFBF7D552B061E0400D67707 /* HabitSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D4C2B061E0400D67707 /* HabitSummaryView.swift */; };
+		BFBF7D5D2B061E5400D67707 /* Habits_WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D5C2B061E5400D67707 /* Habits_WatchApp.swift */; };
+		BFBF7D5F2B061E5400D67707 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D5E2B061E5400D67707 /* ContentView.swift */; };
+		BFBF7D612B061E5600D67707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF7D602B061E5600D67707 /* Assets.xcassets */; };
+		BFBF7D642B061E5600D67707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF7D632B061E5600D67707 /* Preview Assets.xcassets */; };
+		BFBF7D672B061E5600D67707 /* Habits Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BFBF7D5A2B061E5300D67707 /* Habits Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFBF7D712B061EE700D67707 /* SerializableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D402B061DE000D67707 /* SerializableColor.swift */; };
+		BFD55E3A2B0DE0AF009FD184 /* AWHabitListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD55E392B0DE0AF009FD184 /* AWHabitListItemView.swift */; };
+		BFD55E402B0DEA8E009FD184 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C2592B067258001DE950 /* WidgetKit.framework */; };
+		BFD55E412B0DEA8E009FD184 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF85C25B2B067258001DE950 /* SwiftUI.framework */; };
+		BFD55E442B0DEA8E009FD184 /* Habits_Watch_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD55E432B0DEA8E009FD184 /* Habits_Watch_Widget.swift */; };
+		BFD55E462B0DEA8E009FD184 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD55E452B0DEA8E009FD184 /* AppIntent.swift */; };
+		BFD55E482B0DEA90009FD184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD55E472B0DEA90009FD184 /* Assets.xcassets */; };
+		BFD55E4C2B0DEA90009FD184 /* Habits Watch WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BFD55E3F2B0DEA8E009FD184 /* Habits Watch WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFD55E512B0DEB6F009FD184 /* AppHabitAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */; };
+		BFD55E522B0DEB6F009FD184 /* AppHabitAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */; };
+		BFD55E542B0DEB78009FD184 /* Habits_WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85C25E2B067258001DE950 /* Habits_WidgetsBundle.swift */; };
+		BFD55E562B0DEB9A009FD184 /* Habits_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85C2622B067258001DE950 /* Habits_Widgets.swift */; };
+		BFD55E572B0DEBA1009FD184 /* WidgetConfigurationAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */; };
+		BFD55E582B0DEBA1009FD184 /* WidgetConfigurationAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */; };
+		BFD55E592B0DEE9A009FD184 /* Habit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */; };
+		BFD55E5A2B0DEE9C009FD184 /* Event+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305CF2B0B9B52004A01F4 /* Event+Extension.swift */; };
+		BFD55E5B2B0DEEA1009FD184 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D9092B076BAF00803EA2 /* Persistence.swift */; };
+		BFD55E5C2B0DEEA3009FD184 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D533B2B0900E2002B4694 /* Date.swift */; };
+		BFD55E5E2B0DF1F7009FD184 /* ColorOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */; };
+		BFD55E5F2B0DF3D8009FD184 /* SerializableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBF7D402B061DE000D67707 /* SerializableColor.swift */; };
+		BFD55E602B0DF46B009FD184 /* Habits_WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85C25E2B067258001DE950 /* Habits_WidgetsBundle.swift */; };
+		BFD55E672B0E045A009FD184 /* AWHabitGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD55E662B0E045A009FD184 /* AWHabitGlanceView.swift */; };
+		BFD6C5B82B0DD93F00668496 /* HabitList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6C5B72B0DD93F00668496 /* HabitList.swift */; };
+		BFEC17052B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */; };
+		BFEC17062B0CA35D00A7C938 /* WidgetConfigurationAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */; };
+		BFEC172B2B0CAEC400A7C938 /* AppHabitAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */; };
+		BFF305C82B0B8928004A01F4 /* TimedHabitActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305C72B0B8928004A01F4 /* TimedHabitActionButtons.swift */; };
+		BFF305CA2B0B8A3A004A01F4 /* CircleIconButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305C92B0B8A3A004A01F4 /* CircleIconButtonView.swift */; };
+		BFF305CB2B0B8A3D004A01F4 /* CircleIconButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305C92B0B8A3A004A01F4 /* CircleIconButtonView.swift */; };
+		BFF305CC2B0B8A3F004A01F4 /* TimedHabitActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305C72B0B8928004A01F4 /* TimedHabitActionButtons.swift */; };
+		BFF305D02B0B9B52004A01F4 /* Event+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305CF2B0B9B52004A01F4 /* Event+Extension.swift */; };
+		BFF305D12B0BAE47004A01F4 /* Event+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305CF2B0B9B52004A01F4 /* Event+Extension.swift */; };
+		BFF305D32B0BAE78004A01F4 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305D22B0BAE78004A01F4 /* ActivityManager.swift */; };
+		BFF305D42B0BAE78004A01F4 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF305D22B0BAE78004A01F4 /* ActivityManager.swift */; };
+		BFF3E53F2B0832C300DC4DDC /* FullScreenActiveEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3E53E2B0832C300DC4DDC /* FullScreenActiveEventView.swift */; };
+		BFF6C4332B0CB1B400764945 /* AppHabitAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BF85C2692B06725A001DE950 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFBF7D1D2B061D3900D67707 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF85C2562B067258001DE950;
+			remoteInfo = "Habits WidgetsExtension";
+		};
+		BFBF7D652B061E5600D67707 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFBF7D1D2B061D3900D67707 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFBF7D592B061E5300D67707;
+			remoteInfo = "Habits Watch Watch App";
+		};
+		BFD55E4A2B0DEA90009FD184 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFBF7D1D2B061D3900D67707 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFD55E3E2B0DEA8E009FD184;
+			remoteInfo = "Habits Watch WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF85C26C2B06725A001DE950 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BF85C26B2B06725A001DE950 /* Habits WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF7D6B2B061E5600D67707 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BFBF7D672B061E5600D67707 /* Habits Watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFD55E502B0DEA90009FD184 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BFD55E4C2B0DEA90009FD184 /* Habits Watch WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF0910442B0F1DAC00E88210 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
+		BF13D21D2B061F5300ECCEEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF13D2222B063CBF00ECCEEF /* ActiveHabitEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitEventView.swift; sourceTree = "<group>"; };
+		BF4329D32B0E599400ECAE4C /* CustomLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogView.swift; sourceTree = "<group>"; };
+		BF59B7E72B0682A8009D2ED5 /* EventActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivity.swift; sourceTree = "<group>"; };
+		BF616F9A2B079E0A000E32D9 /* Habits WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habits WidgetsExtension.entitlements"; sourceTree = "<group>"; };
+		BF7D533B2B0900E2002B4694 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		BF85C2572B067258001DE950 /* Habits WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habits WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF85C2592B067258001DE950 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BF85C25B2B067258001DE950 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		BF85C25E2B067258001DE950 /* Habits_WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits_WidgetsBundle.swift; sourceTree = "<group>"; };
+		BF85C2602B067258001DE950 /* Habits_WidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits_WidgetsLiveActivity.swift; sourceTree = "<group>"; };
+		BF85C2622B067258001DE950 /* Habits_Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits_Widgets.swift; sourceTree = "<group>"; };
+		BF85C2662B06725A001DE950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF85C2682B06725A001DE950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF85D9092B076BAF00803EA2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Extension.swift"; sourceTree = "<group>"; };
+		BF91A53B2B0CE19F00EB14F6 /* MultiHabitButtonWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHabitButtonWidgetView.swift; sourceTree = "<group>"; };
+		BFBDFF942B0A4A2100F60611 /* EventStateIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStateIntent.swift; sourceTree = "<group>"; };
 		BFBF7D252B061D3900D67707 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBF7D282B061D3900D67707 /* HabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsApp.swift; sourceTree = "<group>"; };
-		BFBF7D2A2B061D3900D67707 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BFBF7D2C2B061D3900D67707 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BFBF7D2E2B061D3A00D67707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFBF7D312B061D3A00D67707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFBF7D332B061D3A00D67707 /* Habits.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habits.entitlements; sourceTree = "<group>"; };
 		BFBF7D342B061D3A00D67707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFBF7D402B061DE000D67707 /* SerializableColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableColor.swift; sourceTree = "<group>"; };
+		BFBF7D422B061DFA00D67707 /* AllEventsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsList.swift; sourceTree = "<group>"; };
+		BFBF7D442B061E0400D67707 /* FeedbackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
+		BFBF7D472B061E0400D67707 /* EditHabitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
+		BFBF7D482B061E0400D67707 /* BrowseDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseDataView.swift; sourceTree = "<group>"; };
+		BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorOptionsList.swift; sourceTree = "<group>"; };
+		BFBF7D4A2B061E0400D67707 /* HabitGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitGrid.swift; sourceTree = "<group>"; };
+		BFBF7D4B2B061E0400D67707 /* HabitGridButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitGridButton.swift; sourceTree = "<group>"; };
+		BFBF7D4C2B061E0400D67707 /* HabitSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitSummaryView.swift; sourceTree = "<group>"; };
+		BFBF7D5A2B061E5300D67707 /* Habits Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habits Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBF7D5C2B061E5400D67707 /* Habits_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits_WatchApp.swift; sourceTree = "<group>"; };
+		BFBF7D5E2B061E5400D67707 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BFBF7D602B061E5600D67707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFBF7D632B061E5600D67707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BFBF7D6C2B061E6100D67707 /* Habits Watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habits Watch Watch App.entitlements"; sourceTree = "<group>"; };
+		BFBF7D6D2B061E7C00D67707 /* Habits-Watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Habits-Watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BFD55E392B0DE0AF009FD184 /* AWHabitListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWHabitListItemView.swift; sourceTree = "<group>"; };
+		BFD55E3F2B0DEA8E009FD184 /* Habits Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habits Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD55E432B0DEA8E009FD184 /* Habits_Watch_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits_Watch_Widget.swift; sourceTree = "<group>"; };
+		BFD55E452B0DEA8E009FD184 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		BFD55E472B0DEA90009FD184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFD55E492B0DEA90009FD184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFD55E652B0DFA6B009FD184 /* Habits Watch WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habits Watch WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		BFD55E662B0E045A009FD184 /* AWHabitGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWHabitGlanceView.swift; sourceTree = "<group>"; };
+		BFD6C5B72B0DD93F00668496 /* HabitList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitList.swift; sourceTree = "<group>"; };
+		BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfigurationAppIntent.swift; sourceTree = "<group>"; };
+		BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHabitAppEntity.swift; sourceTree = "<group>"; };
+		BFF305C72B0B8928004A01F4 /* TimedHabitActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedHabitActionButtons.swift; sourceTree = "<group>"; };
+		BFF305C92B0B8A3A004A01F4 /* CircleIconButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconButtonView.swift; sourceTree = "<group>"; };
+		BFF305CF2B0B9B52004A01F4 /* Event+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Extension.swift"; sourceTree = "<group>"; };
+		BFF305D22B0BAE78004A01F4 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		BFF3E53E2B0832C300DC4DDC /* FullScreenActiveEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenActiveEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF85C2542B067258001DE950 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF85C25C2B067258001DE950 /* SwiftUI.framework in Frameworks */,
+				BF85C25A2B067258001DE950 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFBF7D222B061D3900D67707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF13D2212B061FC700ECCEEF /* SymbolPicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF7D572B061E5300D67707 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFD55E3C2B0DEA8E009FD184 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFD55E412B0DEA8E009FD184 /* SwiftUI.framework in Frameworks */,
+				BFD55E402B0DEA8E009FD184 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF85C2582B067258001DE950 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF85C2592B067258001DE950 /* WidgetKit.framework */,
+				BF85C25B2B067258001DE950 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF85C25D2B067258001DE950 /* Habits Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				BFEC17292B0CAEC400A7C938 /* AppHabitAppEntity.swift */,
+				BF85C25E2B067258001DE950 /* Habits_WidgetsBundle.swift */,
+				BFBDFF942B0A4A2100F60611 /* EventStateIntent.swift */,
+				BF85C2602B067258001DE950 /* Habits_WidgetsLiveActivity.swift */,
+				BF85C2622B067258001DE950 /* Habits_Widgets.swift */,
+				BF91A53B2B0CE19F00EB14F6 /* MultiHabitButtonWidgetView.swift */,
+				BFEC17042B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift */,
+				BF85C2662B06725A001DE950 /* Assets.xcassets */,
+				BF85C2682B06725A001DE950 /* Info.plist */,
+			);
+			path = "Habits Widgets";
+			sourceTree = "<group>";
+		};
 		BFBF7D1C2B061D3900D67707 = {
 			isa = PBXGroup;
 			children = (
+				BFD55E652B0DFA6B009FD184 /* Habits Watch WidgetExtension.entitlements */,
+				BF616F9A2B079E0A000E32D9 /* Habits WidgetsExtension.entitlements */,
+				BFBF7D702B061EC700D67707 /* Shared */,
 				BFBF7D272B061D3900D67707 /* Habits */,
+				BFBF7D5B2B061E5400D67707 /* Habits Watch Watch App */,
+				BF85C25D2B067258001DE950 /* Habits Widgets */,
+				BFD55E422B0DEA8E009FD184 /* Habits Watch Widget */,
+				BF85C2582B067258001DE950 /* Frameworks */,
 				BFBF7D262B061D3900D67707 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +295,9 @@
 			isa = PBXGroup;
 			children = (
 				BFBF7D252B061D3900D67707 /* Habits.app */,
+				BFBF7D5A2B061E5300D67707 /* Habits Watch Watch App.app */,
+				BF85C2572B067258001DE950 /* Habits WidgetsExtension.appex */,
+				BFD55E3F2B0DEA8E009FD184 /* Habits Watch WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,8 +306,20 @@
 			isa = PBXGroup;
 			children = (
 				BFBF7D282B061D3900D67707 /* HabitsApp.swift */,
-				BFBF7D2A2B061D3900D67707 /* ContentView.swift */,
-				BFBF7D2C2B061D3900D67707 /* Item.swift */,
+				BFBF7D4A2B061E0400D67707 /* HabitGrid.swift */,
+				BFF3E53E2B0832C300DC4DDC /* FullScreenActiveEventView.swift */,
+				BF13D21D2B061F5300ECCEEF /* ContentView.swift */,
+				BFBF7D4B2B061E0400D67707 /* HabitGridButton.swift */,
+				BFF305C72B0B8928004A01F4 /* TimedHabitActionButtons.swift */,
+				BFF305C92B0B8A3A004A01F4 /* CircleIconButtonView.swift */,
+				BF13D2222B063CBF00ECCEEF /* ActiveHabitEventView.swift */,
+				BFBF7D482B061E0400D67707 /* BrowseDataView.swift */,
+				BFBF7D492B061E0400D67707 /* ColorOptionsList.swift */,
+				BFBF7D422B061DFA00D67707 /* AllEventsList.swift */,
+				BFBF7D472B061E0400D67707 /* EditHabitView.swift */,
+				BFBF7D442B061E0400D67707 /* FeedbackManager.swift */,
+				BFBF7D4C2B061E0400D67707 /* HabitSummaryView.swift */,
+				BF4329D32B0E599400ECAE4C /* CustomLogView.swift */,
 				BFBF7D2E2B061D3A00D67707 /* Assets.xcassets */,
 				BFBF7D332B061D3A00D67707 /* Habits.entitlements */,
 				BFBF7D342B061D3A00D67707 /* Info.plist */,
@@ -74,9 +336,76 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BFBF7D5B2B061E5400D67707 /* Habits Watch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				BFD55E662B0E045A009FD184 /* AWHabitGlanceView.swift */,
+				BFBF7D6D2B061E7C00D67707 /* Habits-Watch-Watch-App-Info.plist */,
+				BFBF7D6C2B061E6100D67707 /* Habits Watch Watch App.entitlements */,
+				BFBF7D5C2B061E5400D67707 /* Habits_WatchApp.swift */,
+				BFBF7D5E2B061E5400D67707 /* ContentView.swift */,
+				BFD6C5B72B0DD93F00668496 /* HabitList.swift */,
+				BFD55E392B0DE0AF009FD184 /* AWHabitListItemView.swift */,
+				BFBF7D602B061E5600D67707 /* Assets.xcassets */,
+				BFBF7D622B061E5600D67707 /* Preview Content */,
+			);
+			path = "Habits Watch Watch App";
+			sourceTree = "<group>";
+		};
+		BFBF7D622B061E5600D67707 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF7D632B061E5600D67707 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFBF7D702B061EC700D67707 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */,
+				BF85D9092B076BAF00803EA2 /* Persistence.swift */,
+				BF59B7E72B0682A8009D2ED5 /* EventActivity.swift */,
+				BF85D91D2B076CF600803EA2 /* Habit+Extension.swift */,
+				BFF305CF2B0B9B52004A01F4 /* Event+Extension.swift */,
+				BFBF7D402B061DE000D67707 /* SerializableColor.swift */,
+				BF7D533B2B0900E2002B4694 /* Date.swift */,
+				BFF305D22B0BAE78004A01F4 /* ActivityManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BFD55E422B0DEA8E009FD184 /* Habits Watch Widget */ = {
+			isa = PBXGroup;
+			children = (
+				BFD55E432B0DEA8E009FD184 /* Habits_Watch_Widget.swift */,
+				BFD55E452B0DEA8E009FD184 /* AppIntent.swift */,
+				BFD55E472B0DEA90009FD184 /* Assets.xcassets */,
+				BFD55E492B0DEA90009FD184 /* Info.plist */,
+			);
+			path = "Habits Watch Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BF85C2562B067258001DE950 /* Habits WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF85C26F2B06725A001DE950 /* Build configuration list for PBXNativeTarget "Habits WidgetsExtension" */;
+			buildPhases = (
+				BF85C2532B067258001DE950 /* Sources */,
+				BF85C2542B067258001DE950 /* Frameworks */,
+				BF85C2552B067258001DE950 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Habits WidgetsExtension";
+			productName = "Habits WidgetsExtension";
+			productReference = BF85C2572B067258001DE950 /* Habits WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BFBF7D242B061D3900D67707 /* Habits */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFBF7D372B061D3A00D67707 /* Build configuration list for PBXNativeTarget "Habits" */;
@@ -84,15 +413,58 @@
 				BFBF7D212B061D3900D67707 /* Sources */,
 				BFBF7D222B061D3900D67707 /* Frameworks */,
 				BFBF7D232B061D3900D67707 /* Resources */,
+				BFBF7D6B2B061E5600D67707 /* Embed Watch Content */,
+				BF85C26C2B06725A001DE950 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFBF7D662B061E5600D67707 /* PBXTargetDependency */,
+				BF85C26A2B06725A001DE950 /* PBXTargetDependency */,
+			);
+			name = Habits;
+			packageProductDependencies = (
+				BF13D2202B061FC700ECCEEF /* SymbolPicker */,
+			);
+			productName = Habits;
+			productReference = BFBF7D252B061D3900D67707 /* Habits.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFBF7D592B061E5300D67707 /* Habits Watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFBF7D682B061E5600D67707 /* Build configuration list for PBXNativeTarget "Habits Watch Watch App" */;
+			buildPhases = (
+				BFBF7D562B061E5300D67707 /* Sources */,
+				BFBF7D572B061E5300D67707 /* Frameworks */,
+				BFBF7D582B061E5300D67707 /* Resources */,
+				BFD55E502B0DEA90009FD184 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFD55E4B2B0DEA90009FD184 /* PBXTargetDependency */,
+			);
+			name = "Habits Watch Watch App";
+			productName = "Habits Watch Watch App";
+			productReference = BFBF7D5A2B061E5300D67707 /* Habits Watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFD55E3E2B0DEA8E009FD184 /* Habits Watch WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFD55E4D2B0DEA90009FD184 /* Build configuration list for PBXNativeTarget "Habits Watch WidgetExtension" */;
+			buildPhases = (
+				BFD55E3B2B0DEA8E009FD184 /* Sources */,
+				BFD55E3C2B0DEA8E009FD184 /* Frameworks */,
+				BFD55E3D2B0DEA8E009FD184 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Habits;
-			productName = Habits;
-			productReference = BFBF7D252B061D3900D67707 /* Habits.app */;
-			productType = "com.apple.product-type.application";
+			name = "Habits Watch WidgetExtension";
+			productName = "Habits Watch WidgetExtension";
+			productReference = BFD55E3F2B0DEA8E009FD184 /* Habits Watch WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,7 +476,16 @@
 				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					BF85C2562B067258001DE950 = {
+						CreatedOnToolsVersion = 15.1;
+					};
 					BFBF7D242B061D3900D67707 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					BFBF7D592B061E5300D67707 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					BFD55E3E2B0DEA8E009FD184 = {
 						CreatedOnToolsVersion = 15.1;
 					};
 				};
@@ -118,16 +499,30 @@
 				Base,
 			);
 			mainGroup = BFBF7D1C2B061D3900D67707;
+			packageReferences = (
+				BF13D21F2B061FC700ECCEEF /* XCRemoteSwiftPackageReference "SymbolPicker" */,
+			);
 			productRefGroup = BFBF7D262B061D3900D67707 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BFBF7D242B061D3900D67707 /* Habits */,
+				BFBF7D592B061E5300D67707 /* Habits Watch Watch App */,
+				BF85C2562B067258001DE950 /* Habits WidgetsExtension */,
+				BFD55E3E2B0DEA8E009FD184 /* Habits Watch WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF85C2552B067258001DE950 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF85C2672B06725A001DE950 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFBF7D232B061D3900D67707 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,22 +532,206 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFBF7D582B061E5300D67707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFBF7D642B061E5600D67707 /* Preview Assets.xcassets in Resources */,
+				BFBF7D612B061E5600D67707 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFD55E3D2B0DEA8E009FD184 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFD55E482B0DEA90009FD184 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF85C2532B067258001DE950 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFD55E602B0DF46B009FD184 /* Habits_WidgetsBundle.swift in Sources */,
+				BF59B7EC2B068E2E009D2ED5 /* SerializableColor.swift in Sources */,
+				BFBDFF962B0A4A2100F60611 /* EventStateIntent.swift in Sources */,
+				BFF305D12B0BAE47004A01F4 /* Event+Extension.swift in Sources */,
+				BFF305CC2B0B8A3F004A01F4 /* TimedHabitActionButtons.swift in Sources */,
+				BF0910472B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */,
+				BF91A53C2B0CE19F00EB14F6 /* MultiHabitButtonWidgetView.swift in Sources */,
+				BF7D533E2B0900E2002B4694 /* Date.swift in Sources */,
+				BF85D90C2B076BAF00803EA2 /* Persistence.swift in Sources */,
+				BF91A53D2B0CF53600EB14F6 /* ColorOptionsList.swift in Sources */,
+				BFF305CB2B0B8A3D004A01F4 /* CircleIconButtonView.swift in Sources */,
+				BFBDFF9E2B0A848500F60611 /* FeedbackManager.swift in Sources */,
+				BFF305D42B0BAE78004A01F4 /* ActivityManager.swift in Sources */,
+				BF59B7EA2B0682A8009D2ED5 /* EventActivity.swift in Sources */,
+				BF85C2612B067258001DE950 /* Habits_WidgetsLiveActivity.swift in Sources */,
+				BF85D9202B076CF600803EA2 /* Habit+Extension.swift in Sources */,
+				BFF6C4332B0CB1B400764945 /* AppHabitAppEntity.swift in Sources */,
+				BFEC17062B0CA35D00A7C938 /* WidgetConfigurationAppIntent.swift in Sources */,
+				BF85C2632B067258001DE950 /* Habits_Widgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFBF7D212B061D3900D67707 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFBF7D2B2B061D3900D67707 /* ContentView.swift in Sources */,
-				BFBF7D2D2B061D3900D67707 /* Item.swift in Sources */,
+				BFBF7D432B061DFA00D67707 /* AllEventsList.swift in Sources */,
+				BFBF7D552B061E0400D67707 /* HabitSummaryView.swift in Sources */,
+				BF0910452B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */,
+				BFF305C82B0B8928004A01F4 /* TimedHabitActionButtons.swift in Sources */,
+				BF85D90A2B076BAF00803EA2 /* Persistence.swift in Sources */,
+				BFEC17052B0CA34700A7C938 /* WidgetConfigurationAppIntent.swift in Sources */,
+				BFBF7D4D2B061E0400D67707 /* FeedbackManager.swift in Sources */,
+				BFBF7D412B061DE000D67707 /* SerializableColor.swift in Sources */,
+				BFBDFF9D2B0A7F8800F60611 /* EventStateIntent.swift in Sources */,
+				BFEC172B2B0CAEC400A7C938 /* AppHabitAppEntity.swift in Sources */,
+				BFF305D32B0BAE78004A01F4 /* ActivityManager.swift in Sources */,
+				BF13D2232B063CBF00ECCEEF /* ActiveHabitEventView.swift in Sources */,
+				BF4329D42B0E599400ECAE4C /* CustomLogView.swift in Sources */,
+				BF7D533C2B0900E2002B4694 /* Date.swift in Sources */,
+				BFF305CA2B0B8A3A004A01F4 /* CircleIconButtonView.swift in Sources */,
+				BF59B7E82B0682A8009D2ED5 /* EventActivity.swift in Sources */,
+				BFBF7D532B061E0400D67707 /* HabitGrid.swift in Sources */,
+				BFF305D02B0B9B52004A01F4 /* Event+Extension.swift in Sources */,
+				BFBF7D542B061E0400D67707 /* HabitGridButton.swift in Sources */,
+				BFF3E53F2B0832C300DC4DDC /* FullScreenActiveEventView.swift in Sources */,
 				BFBF7D292B061D3900D67707 /* HabitsApp.swift in Sources */,
+				BF85D91E2B076CF600803EA2 /* Habit+Extension.swift in Sources */,
+				BF13D21E2B061F5300ECCEEF /* ContentView.swift in Sources */,
+				BFBF7D502B061E0400D67707 /* EditHabitView.swift in Sources */,
+				BFBF7D522B061E0400D67707 /* ColorOptionsList.swift in Sources */,
+				BFBF7D512B061E0400D67707 /* BrowseDataView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF7D562B061E5300D67707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF91A53F2B0CF68D00EB14F6 /* Habit+Extension.swift in Sources */,
+				BFBF7D5F2B061E5400D67707 /* ContentView.swift in Sources */,
+				BFD55E5A2B0DEE9C009FD184 /* Event+Extension.swift in Sources */,
+				BF7D533D2B0900E2002B4694 /* Date.swift in Sources */,
+				BF85D90B2B076BAF00803EA2 /* Persistence.swift in Sources */,
+				BFBF7D712B061EE700D67707 /* SerializableColor.swift in Sources */,
+				BFD55E572B0DEBA1009FD184 /* WidgetConfigurationAppIntent.swift in Sources */,
+				BFD55E522B0DEB6F009FD184 /* AppHabitAppEntity.swift in Sources */,
+				BFD55E672B0E045A009FD184 /* AWHabitGlanceView.swift in Sources */,
+				BFD55E3A2B0DE0AF009FD184 /* AWHabitListItemView.swift in Sources */,
+				BF0910462B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */,
+				BFD6C5B82B0DD93F00668496 /* HabitList.swift in Sources */,
+				BF91A53E2B0CF53600EB14F6 /* ColorOptionsList.swift in Sources */,
+				BFBF7D5D2B061E5400D67707 /* Habits_WatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFD55E3B2B0DEA8E009FD184 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFD55E5E2B0DF1F7009FD184 /* ColorOptionsList.swift in Sources */,
+				BFD55E542B0DEB78009FD184 /* Habits_WidgetsBundle.swift in Sources */,
+				BF0910482B0F1DAC00E88210 /* Habits.xcdatamodeld in Sources */,
+				BFD55E5B2B0DEEA1009FD184 /* Persistence.swift in Sources */,
+				BFD55E442B0DEA8E009FD184 /* Habits_Watch_Widget.swift in Sources */,
+				BFD55E512B0DEB6F009FD184 /* AppHabitAppEntity.swift in Sources */,
+				BFD55E562B0DEB9A009FD184 /* Habits_Widgets.swift in Sources */,
+				BFD55E582B0DEBA1009FD184 /* WidgetConfigurationAppIntent.swift in Sources */,
+				BFD55E5F2B0DF3D8009FD184 /* SerializableColor.swift in Sources */,
+				BFD55E462B0DEA8E009FD184 /* AppIntent.swift in Sources */,
+				BFD55E5C2B0DEEA3009FD184 /* Date.swift in Sources */,
+				BFD55E592B0DEE9A009FD184 /* Habit+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BF85C26A2B06725A001DE950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF85C2562B067258001DE950 /* Habits WidgetsExtension */;
+			targetProxy = BF85C2692B06725A001DE950 /* PBXContainerItemProxy */;
+		};
+		BFBF7D662B061E5600D67707 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFBF7D592B061E5300D67707 /* Habits Watch Watch App */;
+			targetProxy = BFBF7D652B061E5600D67707 /* PBXContainerItemProxy */;
+		};
+		BFD55E4B2B0DEA90009FD184 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFD55E3E2B0DEA8E009FD184 /* Habits Watch WidgetExtension */;
+			targetProxy = BFD55E4A2B0DEA90009FD184 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		BF85C26D2B06725A001DE950 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Habits WidgetsExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.Habits.Habits-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF85C26E2B06725A001DE950 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Habits WidgetsExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.Habits.Habits-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BFBF7D352B061D3A00D67707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -275,6 +854,7 @@
 		BFBF7D382B061D3A00D67707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habits/Habits.entitlements;
@@ -285,11 +865,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habits/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,6 +888,7 @@
 		BFBF7D392B061D3A00D67707 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habits/Habits.entitlements;
@@ -316,11 +899,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habits/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,9 +919,148 @@
 			};
 			name = Release;
 		};
+		BFBF7D692B061E5600D67707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Habits Watch Watch App/Habits Watch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Habits Watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits-Watch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ryankontos.Habits;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ryankontos.Habits.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		BFBF7D6A2B061E5600D67707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Habits Watch Watch App/Habits Watch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Habits Watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits-Watch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ryankontos.Habits;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ryankontos.Habits.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		BFD55E4E2B0DEA90009FD184 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Habits Watch WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Watch Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.Habits.watchkitapp.Habits-Watch-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		BFD55E4F2B0DEA90009FD184 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Habits Watch WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Habits Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Habits Watch Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.Habits.watchkitapp.Habits-Watch-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF85C26F2B06725A001DE950 /* Build configuration list for PBXNativeTarget "Habits WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF85C26D2B06725A001DE950 /* Debug */,
+				BF85C26E2B06725A001DE950 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BFBF7D202B061D3900D67707 /* Build configuration list for PBXProject "Habits" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -355,7 +1079,57 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		BFBF7D682B061E5600D67707 /* Build configuration list for PBXNativeTarget "Habits Watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFBF7D692B061E5600D67707 /* Debug */,
+				BFBF7D6A2B061E5600D67707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFD55E4D2B0DEA90009FD184 /* Build configuration list for PBXNativeTarget "Habits Watch WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFD55E4E2B0DEA90009FD184 /* Debug */,
+				BFD55E4F2B0DEA90009FD184 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF13D21F2B061FC700ECCEEF /* XCRemoteSwiftPackageReference "SymbolPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xnth97/SymbolPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF13D2202B061FC700ECCEEF /* SymbolPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF13D21F2B061FC700ECCEEF /* XCRemoteSwiftPackageReference "SymbolPicker" */;
+			productName = SymbolPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BF0910432B0F1DAC00E88210 /* Habits.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF0910442B0F1DAC00E88210 /* Habits.xcdatamodel */,
+			);
+			currentVersion = BF0910442B0F1DAC00E88210 /* Habits.xcdatamodel */;
+			path = Habits.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BFBF7D1D2B061D3900D67707 /* Project object */;
 }

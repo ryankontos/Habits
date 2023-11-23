@@ -1,61 +1,89 @@
 //
 //  ContentView.swift
-//  Habits
+//  TimeSince
 //
-//  Created by Ryan on 16/11/2023.
+//  Created by Ryan on 13/11/2023.
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        
+        TabView {
+            Group {
+                
+                HabitGrid()
+                    
+                    .tabItem {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Log")
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    .onAppear {
+                        ActivityManager.updateActivities()
                     }
+                
+                BrowseDataView()
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("Browse") }
+                
+            }
+           
+            .toolbarBackground(.visible, for: .tabBar)
+            /*.safeAreaInset(edge: .bottom, content: {
+                
+                HStack {
+                    
+                  
+                    
+                    VStack(spacing: 10) {
+                        
+                        Text("Logged Shower")
+                        
+                        HStack {
+                            
+                            Text("Undo")
+                                .foregroundStyle(.blue)
+                            
+                            
+                            
+                        }
+                        
+                    }
+                    
+                  
+                    
                 }
-            }
-        } detail: {
-            Text("Select an item")
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background() {
+                    
+                    RoundedRectangle(cornerRadius: 15)
+                       
+                        
+                        .foregroundStyle(.ultraThickMaterial)
+                       
+                   
+                    
+                }
+               
+                .padding(.bottom, 20)
+                
+               
+                   
+                
+                
+            })*/
+           
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        
+        .tabViewStyle(.automatic)
+        
+        
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
