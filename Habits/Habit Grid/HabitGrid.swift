@@ -43,9 +43,10 @@ struct HabitGrid: View {
             }
             
             
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    addButton
+            .plusMenuButton {
+                Button(action: { withAnimation(.smooth) { showNewHabitSheet.toggle() } }) {
+                    Text("Create Habit")
+                    Image(systemName: "plus")
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
@@ -112,10 +113,7 @@ struct HabitGrid: View {
         
         Menu(content: {
             
-         Button(action: { withAnimation(.smooth) { showNewHabitSheet.toggle() } }) {
-                Text("Create Habit")
-              Image(systemName: "plus")
-              }
+       
             
             Divider()
             

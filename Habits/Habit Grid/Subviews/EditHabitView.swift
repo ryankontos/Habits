@@ -61,34 +61,13 @@ struct EditHabitView: View {
                 
                 Section(content: {
                     
-                    Picker(selection: $selectedMode, content: {
-                        
-                        Button(action: {
-                            selectedMode = .moment
-                        }, label: {
-                            Text("Momentary")
-                                .foregroundStyle(Color(UIColor.label))
-                        })
-                        .tag(HabitDurationType.moment)
-                        
-                        Button(action: {
-                            selectedMode = .timed
-                        }, label: {
-                            Text("Timed")
-                                .foregroundStyle(Color(UIColor.label))
-                        })
-                        .tag(HabitDurationType.timed)
-                        
-                    }, label: {
-                        EmptyView()
-                    })
-                    .pickerStyle(.inline)
+                    Toggle("Timed Habit", isOn: $hasDuration)
                     
                    
                 }, header: {
-                    Text("Mode")
+                    Text("Habit Type")
                 }, footer: {
-                    Text("Momentary habits log instantly. Timed habits start a timer  ")
+                    Text("Timed habits events can have an end date as well as a start date. Enable this when you want to track the length of an event as well as the fact that it occured.")
                 })
                 
                 if let existingHabit = existingHabit {

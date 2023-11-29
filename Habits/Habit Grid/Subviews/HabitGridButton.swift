@@ -198,7 +198,7 @@ struct HabitGridButton: View {
                     performUndo(lastCreatedEvent)
                    
                 } else {
-                    actionsFor = habit
+                    editingHabit = habit
                 }
                 
             }) {
@@ -246,9 +246,13 @@ struct HabitGridButton: View {
                 
             }
 
-            Text(getHabitInfoString())
-                .lineLimit(1)
-                .opacity(0.8)
+            TimelineView(.periodic(from: Date(), by: 1)) { date in
+                Text(getHabitInfoString(at: date.date))
+                    .lineLimit(1)
+                    .opacity(0.8)
+            }
+            
+           
         }
     }
 
@@ -287,7 +291,7 @@ struct HabitGridButton: View {
         .foregroundStyle(.white)
     }
 
-    private func getHabitInfoString() -> String {
+    private func getHabitInfoString(at date: Date) -> String {
         
         if state == .adding {
             return habit.hasDuration ? "Starting Timer..." : "Logging..."
@@ -308,32 +312,42 @@ struct HabitGridButton: View {
         
 
         if latest != lastCreatedEvent {
-            return formatRelativeTime(since: latest.startDate ?? Date())
+            return formatRelativeTime(since: latest.startDate ?? Date(), now: date)
         }
 
         if latest.habitHasDuration && habit.hasDuration && latest.endDate == nil {
             return "Timer Active"
         }
 
-        return formatRelativeTime(since: latest.startDate ?? Date())
+        return formatRelativeTime(since: latest.startDate ?? Date(), now: date)
         
     }
 
-    func formatRelativeTime(since date: Date) -> String {
-          let calendar = Calendar.current
-          let now = Date()
-          let components = calendar.dateComponents([.minute, .hour, .day], from: date, to: now)
 
-          if let day = components.day, day > 0 {
-              return "\(day) \(day == 1 ? "day" : "days") ago"
-          } else if let hour = components.hour, hour > 0 {
-              return "\(hour) \(hour == 1 ? "hour" : "hours") ago"
-          } else if let minute = components.minute, minute > 0 {
-              return "\(minute) \(minute == 1 ? "minute" : "minutes") ago"
-          } else {
-              return "Just now"
-          }
-      }
+    func formatRelativeTime(since date: Date, now: Date = Date()) -> String {
+        let calendar = Calendar.current
+
+        let minuteComponents: Set<Calendar.Component> = [.minute]
+        guard let minutes = calendar.dateComponents(minuteComponents, from: date, to: now).minute else {
+            return "Error" // or handle error appropriately
+        }
+
+        
+        let hours = minutes / 60
+        let days = hours / 24
+        
+
+        if days > 3 {
+            return "\(days) \(days == 1 ? "day" : "days") ago"
+        } else if minutes >= 60 {
+            return "\(hours) \(hours == 1 ? "hour" : "hours") ago"
+        } else if minutes >= 1 {
+            return "\(minutes) \(minutes == 1 ? "minute" : "minutes") ago"
+        } else {
+            return "Just Now"
+        }
+    }
+
     
     private func setupContextObserver() {
             contextChangesObserver = NotificationCenter.default.addObserver(
