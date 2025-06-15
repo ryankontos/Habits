@@ -5,13 +5,18 @@
 //  Created by Ryan on 21/11/2023.
 //
 
+
 import Foundation
+#if canImport(ActivityKit)
 import ActivityKit
+
 
 class ActivityManager {
     
     
+    
     static func updateActivities() {
+        
         DispatchQueue.main.async {
             let activities = Activity<EventActivity>.activities
             
@@ -33,17 +38,29 @@ class ActivityManager {
         let activities = findActivities(with: url)
         
         for activity in activities {
+            
             await activity.update(.init(state: contentState, staleDate: nil))
         }
         
     }
     
-    static func endEventWith(url: URL) async {
+    static func endEventsWithHabit(url: URL) async {
+        
+        let activities = findActivities(withHabit: url)
+        
+        for activity in activities {
+            await activity.end(.init(state: .init(state: .destroyed), staleDate: nil), dismissalPolicy: .immediate)
+        }
+        
+        
+    }
+    
+    static func endEventWith(url: URL, withState: EventActivity.StateOption = .destroyed) async {
         
         let activities = findActivities(with: url)
         
         for activity in activities {
-            await activity.end(.init(state: .init(ended: true), staleDate: nil), dismissalPolicy: .immediate)
+            await activity.end(.init(state: .init(state: withState), staleDate: nil), dismissalPolicy: withState == .destroyed ? .immediate : .default)
         }
         
     }
@@ -54,13 +71,21 @@ class ActivityManager {
     }
  
     
+    static func findActivities(withHabit url: URL) -> [Activity<EventActivity>] {
+        
+        return Activity<EventActivity>.activities.filter({ $0.attributes.habitID == url })
+    }
+ 
+    
 
     private static func endActivity(_ activity: Activity<EventActivity>) {
         Task {
-            await activity.end(.init(state: .init(ended: true), staleDate: nil), dismissalPolicy: .immediate)
+            await activity.end(.init(state: .init(state: .destroyed), staleDate: nil), dismissalPolicy: .immediate)
         }
     }
  
     
     
 }
+
+#endif

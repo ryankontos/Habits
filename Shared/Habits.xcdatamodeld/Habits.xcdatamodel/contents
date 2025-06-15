@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C5047e" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23788" systemVersion="24F74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="habitHasDuration" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isCancelled" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="events" inverseEntity="Habit"/>
+    </entity>
+    <entity name="GroupHabitOrder" representedClassName="GroupHabitOrder" syncable="YES" codeGenerationType="class">
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="groupOrderings" inverseEntity="Habit"/>
+        <relationship name="habitGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HabitGroup" inverseName="ordering" inverseEntity="HabitGroup"/>
     </entity>
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="alphaValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -20,6 +25,18 @@
         <attribute name="sensitive" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="symbolName" attributeType="String" defaultValueString="sparkles"/>
         <attribute name="usesCustomColor" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="willDelete" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="habit" inverseEntity="Event"/>
+        <relationship name="groupOrderings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GroupHabitOrder" inverseName="habit" inverseEntity="GroupHabitOrder"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HabitGroup" inverseName="habits" inverseEntity="HabitGroup"/>
     </entity>
+    <entity name="HabitGroup" representedClassName="HabitGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="listOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="symbolName" optional="YES" attributeType="String"/>
+        <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="groups" inverseEntity="Habit"/>
+        <relationship name="ordering" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GroupHabitOrder" inverseName="habitGroup" inverseEntity="GroupHabitOrder"/>
+    </entity>
+    <entity name="HabitReminderSchedule" representedClassName="HabitReminderSchedule" syncable="YES" codeGenerationType="class"/>
 </model>

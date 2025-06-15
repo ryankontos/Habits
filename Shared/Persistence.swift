@@ -11,7 +11,7 @@ import CoreData
 struct PersistenceController {
     
     #if targetEnvironment(simulator)
-        static let shared = PersistenceController(inMemory: false)
+        static let shared = PersistenceController(inMemory: true)
     #else
         static let shared = PersistenceController(inMemory: false)
     #endif
@@ -67,7 +67,11 @@ struct PersistenceController {
 
         if !inMemory {
             
-            migrateStore(for: container, originalCloudKitOptions: originalCloudKitOptions)
+           
+                
+                migrateStore(for: container, originalCloudKitOptions: originalCloudKitOptions)
+                
+            
         }
 
         container.viewContext.automaticallyMergesChangesFromParent = true
@@ -82,7 +86,7 @@ struct PersistenceController {
         let coordinator = container.persistentStoreCoordinator
 
         guard coordinator.persistentStore(for: oldStoreURL) != nil else {
-            print("Migration not needed")
+          //  print("Migration not needed")
             return
         }
 

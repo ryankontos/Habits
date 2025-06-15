@@ -12,10 +12,16 @@ import CoreData
 import ActivityKit
 #endif
 
-extension Habit {
+extension Habit: HabitDisplayable {
+    
+    public var eventsArray: [Event] {
+        let set = self.events?.allObjects as? [Event] ?? []
+        return set
+    }
     
     var serializedColor: SerializableColor? {
             get {
+                
                 return SerializableColor(colorSpace: SerializableColor.SerializableColorSpace(rawValue: Int(colorSpaceValue)) ?? .sRGB,
                                          red: redValue,
                                          green: greenValue,
@@ -61,7 +67,7 @@ extension Habit {
             
         if event.habitHasDuration {
             
-            #if os(iOS)
+            #if canImport(ActivityKit)
             
             let _ = event.startLiveActivity()
             ActivityManager.updateActivities()
@@ -123,4 +129,30 @@ extension Habit {
         
     }
     
+    static func previewHabit(name: String = "Test Habit", color: Color = .purple, symbolName: String = "sparkles", hasDuration: Bool = false) -> Habit {
+        
+        let previewContext = PersistenceController.preview.container.viewContext
+        
+        let habit = Habit(context: previewContext)
+        habit.name = name
+        habit.color = color
+        habit.symbolName = symbolName
+        habit.hasDuration = hasDuration
+        
+        let event = Event(context: previewContext)
+        event.habit = habit
+        event.startDate = Date()
+        event.endDate = nil
+        event.habitHasDuration = hasDuration
+        
+        return habit
+        
+    }
+    
+    func displayData() -> HabitDisplayData {
+        return HabitDisplayData(self)
+    }
+    
 }
+
+

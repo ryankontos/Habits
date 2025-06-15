@@ -55,27 +55,18 @@ struct TimedHabitActionButtons: View {
             switch actionMode {
             case .intent:
                 
-                Button(intent: CompleteTimedEventIntent(type: .requestCancel, id: eventID)) {
-                    cancelButtonView
-                }
-                
                 Button(intent: CompleteTimedEventIntent(type: .complete, id: eventID)) {
                     saveButtonView
                 }
                 
-            case .action(let action):
-                
-                Button(action: {
-                    
-                    action()
-                    
-                    Task {
-                        try? await CompleteTimedEventIntent(type: .cancel, id: eventID).perform()
-                    }
-                    
-                }) {
+                Button(intent: CompleteTimedEventIntent(type: .requestCancel, id: eventID)) {
                     cancelButtonView
                 }
+                
+                
+                
+            case .action(let action):
+                
                 
                 Button(action: {
                     
@@ -88,6 +79,19 @@ struct TimedHabitActionButtons: View {
                 }) {
                     saveButtonView
                 }
+                
+                Button(action: {
+                    
+                    action()
+                    
+                    Task {
+                        try? await CompleteTimedEventIntent(type: .cancel, id: eventID).perform()
+                    }
+                    
+                }) {
+                    cancelButtonView
+                }
+             
                 
             }
             
@@ -103,7 +107,7 @@ struct TimedHabitActionButtons: View {
     }
     
     var cancelButtonView: some View {
-        CircleIconButtonView(color: .gray, iconName: "xmark", buttonSize: buttonSize, fontSize: buttonFontSize)
+        CircleIconButtonView(color: .red, iconName: "trash", buttonSize: buttonSize, fontSize: buttonFontSize)
     }
 }
 

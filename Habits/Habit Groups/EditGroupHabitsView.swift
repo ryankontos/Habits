@@ -81,12 +81,12 @@ struct EditGroupHabitsView: View {
             .toolbarTitleDisplayMode(.inline)
             .environment(\.editMode, self.$editMode)
             .toolbar { // Assumes embedding this view in a NavigationView.
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     editButton
                         
                 }
                 
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Close", action: {
                         dismiss()
                     })

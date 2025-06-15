@@ -70,8 +70,6 @@ struct MultiHabitButtonWidgetView: View {
     var body: some View {
         VStack {
             
-        
-            
             LazyVGrid(columns: columns, spacing: spacingConfiguration.rowSpacing) {
                 
                 ForEach(habits.prefix(habitLimit), id: \.self) { habit in
@@ -114,6 +112,22 @@ struct MultiHabitButtonWidgetView: View {
                     
                         
                     
+                }
+                
+                if habits.count < habitLimit {
+                    
+                    let upper = habitLimit - habits.count
+                    
+                    ForEach(1...upper, id: \.self) { _ in 
+                        
+                        
+                        RoundedRectangle(cornerRadius: 17)
+                            .foregroundStyle(.clear)
+                            .frame(height: spacingConfiguration.buttonHeight)
+                        
+                        
+                    }
+                   
                 }
                 
             }

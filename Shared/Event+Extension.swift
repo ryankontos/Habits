@@ -6,20 +6,20 @@
 //
 
 import Foundation
-#if os(iOS)
+#if canImport(ActivityKit)
 import ActivityKit
 #endif
 
 extension Event {
     
-    #if os(iOS)
+    #if canImport(ActivityKit)
     
     func startLiveActivity() -> Activity<EventActivity>?  {
         
         let atributes = EventActivity(event: self)
         
-        var cs = EventActivity.ContentState()
-        cs.ended = false
+        var cs = EventActivity.ContentState(state: .active)
+        
         
         let activity = try? Activity.request(attributes: atributes, content: .init(state: cs, staleDate: nil))
         
@@ -51,7 +51,13 @@ extension Event {
         
     }
     
-
+    var dateInterval: DateInterval? {
+        if let end = self.endDate {
+            return DateInterval(start: self.startDate!, end: end)
+        }
+        return nil
+        
+    }
     
     static func getEventForURI(uri: URL) -> Event? {
         
@@ -69,3 +75,5 @@ extension Event {
     
     
 }
+
+

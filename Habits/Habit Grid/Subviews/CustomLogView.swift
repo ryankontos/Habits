@@ -16,7 +16,7 @@ struct CustomLogView: View {
     
     var habits = Habit.fetchAll()
     
-    var forceHabit = false
+    
     
     @Environment(\.dismiss) var dismiss
     
@@ -26,30 +26,7 @@ struct CustomLogView: View {
             
             Form {
                 
-                if !forceHabit {
-                    
-                    Picker("Habit", selection: $habit, content: {
-                        
-                        ForEach(habits) { listHabit in
-                            
-                            Button(action: {
-                                habit = listHabit
-                            }, label: {
-                                
-                                HStack(spacing: 0) {
-                                    
-                                    
-                                    Text("\(listHabit.name!)")
-                                }
-                                
-                                
-                            })
-                            
-                        }
-                        
-                    })
-                    
-                }
+     
                 
                 Section(content: {
                     
@@ -78,7 +55,7 @@ struct CustomLogView: View {
                                 .frame(width: 42)
                             
                             Image(systemName: habit.symbolName!)
-                                .font(.system(size: 22))
+                                .font(.habitsFont(size: 22))
                                 .foregroundStyle(.white)
                                 
                                 
@@ -89,7 +66,7 @@ struct CustomLogView: View {
                         .foregroundStyle(habit.color.gradient)
                         
                         Text(habit.name!)
-                            .font(.system(size: 18))
+                            .font(.habitsFont(size: 18))
                             .textCase(.none)
                             .fontWeight(.semibold)
                             .foregroundStyle(Color(UIColor.label))
@@ -102,7 +79,8 @@ struct CustomLogView: View {
                 }*/)
             }
             .toolbarTitleDisplayMode(.inline)
-            .navigationTitle("Custom \(habit.name!.capitalized) Log")
+            .navigationTitle("Log \(habit.name!.capitalized)")
+            
             .toolbar(content: {
                 ToolbarItem(placement: .cancellationAction, content: {
                     Button("Cancel", action: {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SymbolPicker
+import LocalAuthentication
 
 struct EditHabitView: View {
     
@@ -15,24 +16,39 @@ struct EditHabitView: View {
         case timed
     }
     
+    enum FocusedField {
+        case habitName
+    }
+    
     @Environment(\.dismiss) private var dismiss
     @FetchRequest(sortDescriptors: [SortDescriptor(\.listOrder)]) var habits: FetchedResults<Habit>
     @Environment(\.managedObjectContext) var context
     
     @State var name = ""
-    @State var color: Color = Color(UIColor.systemBlue)
+    @State var color: Color = ColorOptionsList.colors.randomElement()!
     @State var useCustomColor = false
-    @State var symbolName = "shower"
+    @State var symbolName = "sparkles"
     @State var showSymbolPicker = false
     @State var hasDuration = false
     @State var secure = false
     @State var selectedMode: HabitDurationType = .moment
+    @FocusState private var focusedField: FocusedField?
+
     
-    var existingHabit: Habit?
+    @State var showDeleteAlert = false
     
-    init(_ habit: Habit? = nil) {
+    private var group: HabitGroup? // If we have a group, we want to add this habit to it upon creation
+    
+    private var existingHabit: Habit?
+    
+    init(_ habit: Habit? = nil, group: HabitGroup?) {
+        self.group = group
         guard let habit = habit else { return }
         self.existingHabit = habit
+        
+    
+        
+       
     }
 
     var isFormValid: Bool {
@@ -42,12 +58,33 @@ struct EditHabitView: View {
     var body: some View {
         NavigationStack {
             Form {
+                
+                if let group, existingHabit == nil {
+                    
+                    Section {
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Text("This habit will be automatically added to \(group.name!).")
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(.secondary)
+                         
+                            Spacer()
+                            
+                        }
+                    }
+                    
+                }
+                
                 Section(content: {
                     TextField("Name", text: $name)
+                        .focused($focusedField, equals: .habitName)
                 }, header: {
                     headerView
                 })
-                Section {
+                Section(content: {
                     if useCustomColor {
                         ColorPicker("Color", selection: $color, supportsOpacity: false)
                     } else {
@@ -57,24 +94,57 @@ struct EditHabitView: View {
                     }
                     
                     Toggle("Custom Color", isOn: $useCustomColor.animation())
-                }
+                }, header: {
+                    Text("Color")
+                })
                 
                 Section(content: {
                     
-                    Toggle("Timed Habit", isOn: $hasDuration)
+                    Toggle(isOn: $hasDuration, label: {
+                        
+                        HStack {
+                            
+                            Image(systemName: "stopwatch")
+                            Text("Timed Habit")
+                            
+                        }
+                        
+                    })
+                    
+                   
                     
                    
                 }, header: {
                     Text("Habit Type")
                 }, footer: {
-                    Text("Timed habits events can have an end date as well as a start date. Enable this when you want to track the length of an event as well as the fact that it occured.")
+                    Text("Timed habits can have an end date as well as a start date. Enable this when you want to track the length of an event.")
                 })
                 
-                if let existingHabit = existingHabit {
+                Section(content: {
+                    
+                    Toggle(isOn: $hasDuration, label: {
+                        
+                        HStack {
+                            
+                            Image(systemName: "lock.fill")
+                            Text("Hidden Habit")
+                            
+                        }
+                        
+                    })
+                    
+                   
+                    
+                   
+                
+                }, footer: {
+                    Text(getHiddenInfoString())
+                })
+                
+                if existingHabit != nil {
                     Section {
                         Button(role: .destructive, action: {
-                            context.delete(existingHabit)
-                            dismiss()
+                            self.showDeleteAlert = true
                             
                         }, label: {
                             Text("Delete Habit")
@@ -82,23 +152,19 @@ struct EditHabitView: View {
                     }
                 }
             }
+            .onAppear {
+                focusedField = .habitName
+            }
             .navigationTitle("New Habit")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
-                        self.dismiss()
-                    }
-                }
-             
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") {
-                        save()
-                    }
-                    .disabled(!isFormValid)
-                    .fontWeight(.medium)
-                }
-            }
+            
+            
+            .formToolbar(onCancel: {
+                self.dismiss()
+            }, onSave: {
+                save()
+            }, allowSave: isFormValid, tint: color)
+       
             
         }
         .onAppear() {
@@ -122,6 +188,7 @@ struct EditHabitView: View {
             }
             
         }
+        .deleteHabitAlert(showAlert: $showDeleteAlert, habit: existingHabit, dismissAfterDelete: true)
         
     }
     
@@ -139,7 +206,7 @@ struct EditHabitView: View {
                     
                     Image(systemName: symbolName)
                         .foregroundStyle(Color.white)
-                        .font(.system(size: 70))
+                        .font(.habitsFont(size: 70))
                         .padding(.all, 30)
                        
                     
@@ -157,7 +224,7 @@ struct EditHabitView: View {
                 Text("Choose Icon")
                     .foregroundStyle(Color.primary)
                     .fontWeight(.bold)
-                    .font(.system(size: 14))
+                    .font(.habitsFont(size: 14))
                     .textCase(.none)
                     .padding(.horizontal, 17)
                     .padding(.vertical, 10)
@@ -196,14 +263,69 @@ struct EditHabitView: View {
             habit.hasDuration = hasDuration
             habit.usesCustomColor = useCustomColor
             context.insert(habit)
+            
+            if let group {
+                
+                group.addHabit(habit: habit)
+                
+            }
+            
         }
         
         try? context.save()
         self.dismiss()
         
     }
+    
+    
+    func getHiddenInfoString() -> String {
+        
+        let type = EditHabitView.biometricType()
+        
+        if [BiometricType.face, .optic, .touch].contains(type) {
+            
+            return "Hidden habits are hidden from the app by default, and can unlocked with \(type.rawValue) or your device passcode."
+            
+        } else {
+            
+            return "Hidden habits are hidden from the app by default, and can unlocked with your device passcode."
+            
+        }
+        
+    }
+    
+
+    static func biometricType() -> BiometricType {
+        let authContext = LAContext()
+        if #available(iOS 11, *) {
+            let _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+            switch(authContext.biometryType) {
+            case .none:
+                return .none
+            case .touchID:
+                return .touch
+            case .faceID:
+                return .face
+            case .opticID:
+                return .optic
+            @unknown default:
+                return .none
+            }
+        } else {
+            return authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touch : .none
+        }
+    }
+
+    enum BiometricType: String {
+        case none
+        case touch = "Touch ID"
+        case face = "Face ID"
+        case optic = "Optic ID"
+    }
+    
 }
 
+
 #Preview {
-    EditHabitView()
+    EditHabitView(group: nil)
 }

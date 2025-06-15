@@ -1,5 +1,320 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "" : {
+
+    },
+    "%@" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "6" : {
+
+    },
+    "6M" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "Add Custom Log" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "All %@ Events" : {
+
+    },
+    "All Data" : {
+
+    },
+    "All Habits" : {
+
+    },
+    "Browse" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Cancel Event" : {
+
+    },
+    "Choose Icon" : {
+
+    },
+    "Choose the Habits that appear in this widget." : {
+
+    },
+    "Close" : {
+
+    },
+    "color" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "color"
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "colour"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "colour"
+          }
+        }
+      }
+    },
+    "Color" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colour"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colour"
+          }
+        }
+      }
+    },
+    "Complete Event" : {
+
+    },
+    "Configure Habits Widget" : {
+
+    },
+    "Confirm Event Cancellation" : {
+
+    },
+    "Count" : {
+
+    },
+    "Create New Group" : {
+
+    },
+    "Custom Color" : {
+      "localizations" : {
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Colour"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Colour"
+          }
+        }
+      }
+    },
+    "Custom Date" : {
+
+    },
+    "D" : {
+
+    },
+    "Data" : {
+
+    },
+    "Date" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete %@?" : {
+
+    },
+    "Delete Group" : {
+
+    },
+    "Delete Habit" : {
+
+    },
+    "Done" : {
+
+    },
+    "Edit Group" : {
+
+    },
+    "Edit Habit" : {
+
+    },
+    "End" : {
+
+    },
+    "End: %@" : {
+
+    },
+    "EventCompletionType" : {
+
+    },
+    "Folder Name" : {
+
+    },
+    "Groups" : {
+
+    },
+    "Habit Categories" : {
+
+    },
+    "Habit Type" : {
+
+    },
+    "Habits" : {
+
+    },
+    "Heat Map" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Hidden Habit" : {
+
+    },
+    "Hour" : {
+
+    },
+    "ID" : {
+
+    },
+    "Included" : {
+
+    },
+    "Interval" : {
+
+    },
+    "Just Now" : {
+
+    },
+    "Latest" : {
+
+    },
+    "Locked View" : {
+
+    },
+    "Log" : {
+
+    },
+    "Log %@" : {
+
+    },
+    "M" : {
+
+    },
+    "Manage Group Habits" : {
+
+    },
+    "Manage Habits" : {
+
+    },
+    "Name" : {
+
+    },
+    "New Habit" : {
+
+    },
+    "No Habits" : {
+
+    },
+    "Not Included" : {
+
+    },
+    "Now" : {
+
+    },
+    "Option 3" : {
+
+    },
+    "Rearrange Habits" : {
+
+    },
+    "Reject Cancel Event" : {
+
+    },
+    "Save" : {
+
+    },
+    "Search" : {
+
+    },
+    "Set Event State" : {
+
+    },
+    "Show Active Timers" : {
+
+    },
+    "Shower" : {
+
+    },
+    "This habit will be automatically added to %@." : {
+
+    },
+    "Timed Habit" : {
+
+    },
+    "Timed habits can have an end date as well as a start date. Enable this when you want to track the length of an event." : {
+
+    },
+    "Total" : {
+
+    },
+    "Total Logs" : {
+
+    },
+    "Type" : {
+
+    },
+    "Undo Complete" : {
+
+    },
+    "Unlock" : {
+
+    },
+    "W" : {
+
+    },
+    "Y" : {
+
+    }
+  },
   "version" : "1.0"
 }

@@ -5,76 +5,33 @@
 //  Created by Ryan on 17/11/2023.
 //
 
+#if canImport(ActivityKit)
 import ActivityKit
 import WidgetKit
 import SwiftUI
 
 
+
 struct Habits_WidgetsLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: EventActivity.self) { context in
-            
 
+         
             HStack {
                 
                 
-                
-                let attributes = context.attributes
-                
-                HStack {
-                    
-                    
-                    
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack(spacing: 5) {
-                            Image(systemName: "\(attributes.symbolName)")
-                            Text("\(attributes.habitName)")
-                                .font(.system(size: 18))
-                                .fontWeight(.semibold)
-                        }
-                        .foregroundStyle(attributes.color)
-                        
-                        
-                        HStack {
-                            
-                            
-                            Text(attributes.startDate, style: .timer)
-                                .foregroundStyle(Color(UIColor.label))
-                                .monospacedDigit()
-                                .opacity(0.8)
-                                .lineLimit(1)
-                                .font(.system(size: 36))
-                                .fontWeight(.regular)
-                                .frame(maxWidth: 500, alignment: .leading)
-                        }
-                        
-                    }
-                    
-                    
-                    
-                    
-                }
-                
+                LiveActivityLeadingView(activity: context.attributes, state: context.state)
+               
                 Spacer()
                 
-                if context.state.userWantsToCancel {
-                    getConfirmCancelView(id: attributes.eventID)
-                } else {
-                    TimedHabitActionButtons(eventID: attributes.eventID, color: attributes.color, buttonSpacing: 10, buttonSize: 50, buttonFontSize: 20)
-                }
-                
-                
-                
-                
+                LiveActivityTrailingView(activity: context.attributes, state: context.state, spacing: 15, buttonSize: 61, fontSize: 22)
                 
                 
             }
             .padding(.horizontal, 25)
             .padding(.vertical, 20)
-            .activityBackgroundTint(Color.secondary)
             
             
-            //.activitySystemActionForegroundColor(context.attributes.color.color)
             
         } dynamicIsland: { context in
             
@@ -92,11 +49,11 @@ struct Habits_WidgetsLiveActivity: Widget {
                     
                     
                     
-                    Image(systemName: attributes.symbolName)
+                    Image(systemName: attributes.habitData.symbolName!)
                         .font(.system(size: 20))
                         .padding(.leading, 15)
                         .tint(.cyan)
-                        .foregroundStyle(attributes.color)
+                        .foregroundStyle(attributes.habitData.serializedColor!.color)
                     
                 } compactTrailing: {
                     
@@ -110,13 +67,13 @@ struct Habits_WidgetsLiveActivity: Widget {
                     
                     
                 } minimal: {
-                    Image(systemName: attributes.symbolName)
+                    Image(systemName: attributes.habitData.symbolName!)
                         .padding(.horizontal, 6)
-                        .tint(.cyan)
-                        .foregroundStyle(attributes.color)
+                        .tint(attributes.habitData.serializedColor!.color)
+                        .foregroundStyle(attributes.habitData.serializedColor!.color)
                 }
                 .widgetURL(URL(string: "http://www.apple.com"))
-                .keylineTint(attributes.color)
+                .keylineTint(attributes.habitData.serializedColor!.color)
                 
             
         }
@@ -139,12 +96,12 @@ struct Habits_WidgetsLiveActivity: Widget {
                 Spacer()
                 
                 HStack(spacing: 5) {
-                    Image(systemName: "\(attributes.symbolName)")
-                    Text("\(attributes.habitName)")
+                    Image(systemName: "\(attributes.habitData.symbolName!)")
+                    Text("\(attributes.habitData.name!)")
                         .font(.system(size: 18))
                         .fontWeight(.semibold)
                 }
-                .foregroundStyle(attributes.color)
+                .foregroundStyle(attributes.habitData.serializedColor!.color)
                 
                 
                 HStack {
@@ -159,69 +116,21 @@ struct Habits_WidgetsLiveActivity: Widget {
                 }
                 
                 Spacer()
-                
             }
-            .padding(.leading, 7)
-            
-            
-            
         }
+        
         DynamicIslandExpandedRegion(.trailing) {
             
-            VStack {
-                
-                Spacer()
-                
-                // spac 10, wid, 52, te, 20
-                
-                if context.state.userWantsToCancel {
-                    getConfirmCancelView(id: attributes.eventID)
-                } else {
-                    TimedHabitActionButtons(eventID: attributes.eventID, color: attributes.color, buttonSpacing: 10, buttonSize: 50, buttonFontSize: 20)
-                }
-                
-                
-                
-                Spacer()
-                
-            }
-            .padding(.trailing, 7)
-            
-            
-        }
-        
-    }
-    
- 
-    
-    func getConfirmCancelView(id: URL) -> some View {
-        
-        VStack {
-            
-            Text("Cancel?")
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-            
-            HStack {
-                
-                Button(role:.destructive, intent: CompleteTimedEventIntent(type: .cancel, id: id), label: {
-                    Text("Yes")
-                        .frame(width: 50)
-                })
-                
-                
-                Button(intent: CompleteTimedEventIntent(type: .undoCancel, id: id), label: {
-                    Text("No")
-                        .frame(width: 50)
-                })
-                
-                
-            }
+            LiveActivityTrailingView(activity: context.attributes, state: context.state, spacing: 7, buttonSize: 50, fontSize: 25)
+                .padding(.top, 2)
             
         }
         
         
+        
     }
+    
+
   
     
 }
@@ -256,7 +165,8 @@ extension EventActivity {
 #Preview("Notification", as: .content, using: EventActivity.preview) {
    Habits_WidgetsLiveActivity()
 } contentStates: {
-    EventActivity.ContentState.init(ended: false)
+    EventActivity.ContentState.init(state: .active)
     
 }
 
+#endif

@@ -18,7 +18,6 @@ struct FullScreenActiveEventView: View {
     
     @ObservedObject var event: Event
     
-    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -36,9 +35,9 @@ struct FullScreenActiveEventView: View {
                         HStack(spacing: 13) {
                             
                             Image(systemName: "\(habit.symbolName!)")
-                                .font(.system(size: 30))
+                                .font(.habitsFont(size: 30))
                             Text("\(event.habit?.name ?? "")")
-                                .font(.system(size: 25))
+                                .font(.habitsFont(size: 25))
                                 .fontWeight(.semibold)
                             
                         }
@@ -49,7 +48,7 @@ struct FullScreenActiveEventView: View {
                             Text(event.startDate?.msTimerString(at: i.date) ?? "")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
-                                .font(.system(size: 90))
+                                .font(.habitsFont(size: 90))
                                 .fontWeight(.thin)
                                 .monospacedDigit()
                             
@@ -87,7 +86,12 @@ struct FullScreenActiveEventView: View {
                 }) */
                 
                 .onAppear() {
+                    
+                    #if canImport(ActivityKit)
+                    
                     ActivityManager.updateActivities()
+                    
+                    #endif
                 }
                 
                 

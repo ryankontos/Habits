@@ -3,7 +3,9 @@
 // Created by Ryan on 13/11/2023.
 
 import SwiftUI
+#if canImport(ActivityKit)
 import ActivityKit
+#endif
 import CoreData
 
 struct HabitGridButton: View {
@@ -13,47 +15,42 @@ struct HabitGridButton: View {
     }
     
     @State private var contextChangesObserver: Any?
-
-    @ObservedObject var habit: Habit
+    
+    var habit: Habit
     @Environment(\.managedObjectContext) var context
+    @Environment(\.colorScheme) var colorScheme
     @State private var internalState: InfoButtonState = .idle
-    @Binding var editingHabit: Habit?
-    @Binding var timerEvent: Event?
-    @Binding var actionsFor: Habit?
+  
     @State var lastCreatedEvent: Event?
+    
+    @State var showDelete: Bool = false
     
     @FetchRequest
     private var events: FetchedResults<Event>
     
-    init(habit: Habit, editingHabit: Binding<Habit?>,  timerEvent: Binding<Event?>, actionsFor: Binding<Habit?>) {
+    @EnvironmentObject var gridState: HabitGridState
+    
+    init(habit: Habit) {
         
-        self.habit = habit
-        
-        
-        self._editingHabit = editingHabit
-        self._timerEvent = timerEvent
-        self._actionsFor = actionsFor
-        
+       
+      
         let request: NSFetchRequest<Event> = Event.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
         request.predicate = NSPredicate(format: "habit == %@ AND isCancelled == %@", habit, NSNumber(value: false))
         request.fetchLimit = 1
         
         _events = FetchRequest(fetchRequest: request, animation: .easeInOut)
-        
        
+        self.habit = habit
+        
+        
+        
     }
-    
-  
     
     var state: InfoButtonState {
         
         get {
-            
-          
-        
             return internalState
-            
         }
         
         set (new) {
@@ -63,20 +60,43 @@ struct HabitGridButton: View {
     }
     
     var body: some View {
+        
+        
+        
         Button(action: onMainTap) {
-            buttonContent()
-        }
-        .onAppear() {
-           
-            setupContextObserver()
-        }
-        .onAppear() {
-            if lastCreatedEvent?.managedObjectContext == nil {
-                lastCreatedEvent = nil
+            if habit.isDeleted {
+                 EmptyView()
+            } else {
+                
+                buttonContent()
+                    
+                    .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 25.0))
+                    .contextMenu {
+                        buttonContextMenu()
+                        
+                        
+                    }
+                    .onAppear() {
+                       
+                        setupContextObserver()
+                    }
+                    .onAppear() {
+                        if lastCreatedEvent?.managedObjectContext == nil {
+                            lastCreatedEvent = nil
+                        }
+                    }
+                    //.disabled(state != .idle)
+                    .contentShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                    .deleteHabitAlert(showAlert: $showDelete, habit: habit, dismissAfterDelete: false)
+                    
             }
+               
+                
+            
         }
-        //.disabled(state != .idle)
-        .contentShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+        .bouncyButton()
+        .drawingGroup()
+       
     }
 
     private func onMainTap() {
@@ -85,19 +105,16 @@ struct HabitGridButton: View {
             return
         }
         
-        
         withAnimation {
             internalState = .adding
         }
         
         FeedbackManager.shared.selectionChanged()
 
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             FeedbackManager.shared.notificationOccurred(.success)
             let event = saveNewEvent()
 
-            
             self.scheduleTask(interval: 0, forLastCreatedID: event.objectID) {
                 internalState = .done
             }
@@ -145,12 +162,11 @@ struct HabitGridButton: View {
         let event = habit.createNewEvent()
         lastCreatedEvent = event
         if event.habitHasDuration {
+         
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-                timerEvent = event
-            }
-            
+            #if canImport(ActivityKit)
             ActivityManager.updateActivities()
+            #endif
             
         }
         
@@ -163,9 +179,12 @@ struct HabitGridButton: View {
             RoundedRectangle(cornerRadius: 25.0, style: .continuous)
                 .frame(height: 120)
                 .foregroundStyle(habit.color)
-                .shadow(radius: 3)
-                .opacity(0.8)
+                //.shadow(radius: 4)
+                .brightness(colorScheme == .dark ? -0.1 : 0)
+               
+               // .opacity(0.8)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                
 
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
@@ -178,6 +197,8 @@ struct HabitGridButton: View {
 
                 Spacer()
             }
+        
+           // .drawingGroup(opaque: false)
             .padding(.leading, 15)
             .padding(.trailing, 10)
         }
@@ -188,7 +209,7 @@ struct HabitGridButton: View {
         HStack {
             Image(systemName: habit.symbolName ?? "")
                 .frame(height: 20)
-                .font(.system(size: 22))
+                .font(.habitsFont(size: 22))
             
             Spacer()
             
@@ -198,7 +219,7 @@ struct HabitGridButton: View {
                     performUndo(lastCreatedEvent)
                    
                 } else {
-                    editingHabit = habit
+                    gridState.editingHabit = habit
                 }
                 
             }) {
@@ -208,6 +229,7 @@ struct HabitGridButton: View {
             .scaleEffect([InfoButtonState.done, .undo].contains(state) ? 1.25 : 1.0)
             .disabled([InfoButtonState.adding, .undoing, .done].contains(state))
             .frame(height: 30)
+           
         }
     }
     
@@ -236,13 +258,15 @@ struct HabitGridButton: View {
                     
                     Image(systemName: "stopwatch")
                         .foregroundStyle(.white)
-                        .font(.system(size: 15, weight: .semibold))
+                        .font(.habitsFont(size: 15))
+                        .fontWeight(.semibold)
                     
                 }
                 
                 Text(habit.name ?? "")
                     .lineLimit(1)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.habitsFont(size: 18))
+                    .fontWeight(.semibold)
                 
             }
 
@@ -254,12 +278,14 @@ struct HabitGridButton: View {
             
            
         }
+       
     }
 
     private var infoButtonContent: some View {
         ZStack {
             Circle()
                 .foregroundStyle(.white.opacity(0.2))
+                
             Circle()
                 .trim(from: 0, to: [InfoButtonState.adding].contains(state) ? 1.0 : 0.0)
                 .stroke(Color.white, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
@@ -270,7 +296,8 @@ struct HabitGridButton: View {
                 .transaction { $0.animation = [InfoButtonState.idle, .done].contains(state) ? nil : .default }
 
         }
-        .drawingGroup()
+        
+       // .drawingGroup()
     }
 
     private var stateImage: some View {
@@ -312,14 +339,14 @@ struct HabitGridButton: View {
         
 
         if latest != lastCreatedEvent {
-            return formatRelativeTime(since: latest.startDate ?? Date(), now: date)
+            return formatRelativeTime(since: latest.endDate ?? latest.startDate ?? Date(), now: date)
         }
 
         if latest.habitHasDuration && habit.hasDuration && latest.endDate == nil {
             return "Timer Active"
         }
 
-        return formatRelativeTime(since: latest.startDate ?? Date(), now: date)
+        return formatRelativeTime(since: latest.endDate ?? latest.startDate ?? Date(), now: date)
         
     }
 
@@ -373,6 +400,93 @@ struct HabitGridButton: View {
                 
             }
             lastCreatedEvent = nil
+    }
+    
+    @ViewBuilder
+    func buttonContextMenu() -> some View {
+        
+        Group {
+            
+            Section("Log") {
+                
+                Button(action: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                        onMainTap()
+                    }
+                }, label: {
+                    Image(systemName: "plus")
+                    Text("Now")
+                })
+                
+                Button(action: {
+                    
+                    gridState.customLogHabit = habit
+                    
+                }, label: {
+                    Image(systemName: "calendar.badge.plus")
+                    Text("Custom Date")
+                })
+                
+            }
+            
+            Divider()
+            
+            if let group = gridState.group {
+                
+                Button(action: {
+                    
+                    gridState.showEditGroup = true
+                    
+                   
+                    
+                }, label: {
+                    Image(systemName: "square.grid.2x2.fill")
+                    Text("Manage Group Habits")
+                })
+                
+            } else {
+                
+                Button(action: {
+                    
+                    gridState.showReorder = true
+                    
+                   
+                    
+                }, label: {
+                    Image(systemName: "square.grid.2x2.fill")
+                    Text("Rearrange Habits")
+                })
+                
+            }
+            
+         
+            
+            Divider()
+            
+            Button(action: {
+                
+                gridState.editingHabit = habit
+                
+               
+                
+            }, label: {
+                Image(systemName: "pencil")
+                Text("Edit Habit")
+            })
+            
+            Button(role: .destructive, action: {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    showDelete = true
+                }
+                
+            }, label: {
+                Image(systemName: "trash")
+                Text("Delete Habit")
+            })
+            
         }
+        
+    }
     
 }

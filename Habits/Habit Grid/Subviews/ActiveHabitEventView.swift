@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+/// A card displaying a timer and action buttons for an event. For use in HabitGrid.
 struct ActiveHabitEventView: View {
     
-    @ObservedObject var habit: Habit
-    @ObservedObject var event: Event
+var habit: Habit
+   var event: Event
     
     @Environment(\.managedObjectContext) var context
     
@@ -27,9 +28,9 @@ struct ActiveHabitEventView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         HStack(spacing: 5) {
-                            Image(systemName: "\(habit.symbolName!)")
+                            Image(systemName: "\(habit.symbolName ?? "")")
                             Text("\(habit.name!)")
-                                .font(.system(size: 16))
+                                .font(.habitsFont(size: 16))
                                 .fontWeight(.semibold)
                         }
                         .foregroundStyle(habit.color)
@@ -40,7 +41,7 @@ struct ActiveHabitEventView: View {
                                 .foregroundStyle(Color(UIColor.label))
                                 .monospacedDigit()
                                 .opacity(0.8)
-                                .font(.system(size: 29))
+                                .font(.habitsFont(size: 29))
                             
                         } else {
                             TimelineView(.periodic(from: ActiveHabitEventView.start, by: 0.04)) { context in
@@ -49,7 +50,7 @@ struct ActiveHabitEventView: View {
                                     .foregroundStyle(Color(UIColor.label))
                                     .monospacedDigit()
                                     .opacity(0.8)
-                                    .font(.system(size: 29))
+                                    .font(.habitsFont(size: 29))
                             }
                         }
                         

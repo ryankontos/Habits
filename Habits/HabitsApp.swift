@@ -21,9 +21,14 @@ struct HabitsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LockContainerView()
                 .onAppear {
+                    
+                #if canImport(ActivityKit)
+                    
                     ActivityManager.updateActivities()
+                    
+                    #endif
                 }
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
@@ -31,4 +36,10 @@ struct HabitsApp: App {
         
     }
     
+}
+
+extension Font {
+    static func habitsFont(size: CGFloat) -> Font {
+        return Font.system(size: size)
+    }
 }
